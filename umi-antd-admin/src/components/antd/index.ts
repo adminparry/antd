@@ -3,5 +3,5 @@ import Table from '../table';
 
 export {
     Button,
-    Table
+    Table,
 };

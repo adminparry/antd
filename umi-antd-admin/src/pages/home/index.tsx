@@ -1,13 +1,22 @@
 import React from 'react';
-import Button from '@/components/button';
-
+import { Layout } from 'antd';
 import './index.less';
+const {Sider,  Header, Content, Footer} = Layout;
 
 class Home extends React.PureComponent {
 
     render() {
         return (
-            <Button type="primary">hello home</Button>
+            <Layout style={{minHeight: '100vh'}}>
+                
+                <Sider theme={'light'}>Sider</Sider>
+                <Layout>
+                    {/* 这个header默认是黑色的好恶心 */}
+                    <Header style={{background: 'none'}}>Header</Header>
+                    <Content>Content</Content>
+                    <Footer>Footer</Footer>
+                </Layout>
+            </Layout>
         )
     }
 }
