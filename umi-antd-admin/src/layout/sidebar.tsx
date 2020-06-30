@@ -8,10 +8,25 @@ export interface ISidebarProps {
 }
 
 class Sidebar extends React.PureComponent<ISidebarProps, {}, {}> {
-
+   
+    state = {
+        defaultOpenKeys: [],
+        defaultSelectedKeys: [window.location.pathname]
+    }
+    componentDidMount(){
+        this.props.menuData.forEach(item => {
+            if(item.routes){
+                if(window.location.pathname.indexOf(item.path) > -1){
+                    this.setState({
+                        defaultOpenKeys: [item.path]
+                    })
+                }
+            }
+        })
+    }
     subMenu = (item: any) => {
         if(item.routes){
-            
+           
             return <Menu.SubMenu key={item.path} title={item.name}>
                 {item.routes.map(this.subMenu)}
             </Menu.SubMenu>
@@ -28,9 +43,10 @@ class Sidebar extends React.PureComponent<ISidebarProps, {}, {}> {
         
     }
     render() {
+        const { defaultOpenKeys, defaultSelectedKeys} = this.state;
 
         return (
-            <Menu>
+            <Menu defaultOpenKeys={defaultOpenKeys} defaultSelectedKeys={defaultSelectedKeys}>
                 {/* <Menu.Item key="1" icon={<UserOutlined />}>
                     nav 1
                 </Menu.Item>

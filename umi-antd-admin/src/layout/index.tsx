@@ -12,7 +12,7 @@ export interface ILayoutProps {
 class BasicLayout extends React.PureComponent<ILayoutProps, {}, {}> {
 
     render() {
-        console.log(this.props.routes.find(item => item.path == config.home).routes)
+       
         return (
             <Layout style={{minHeight: '100vh'}}>
                 
