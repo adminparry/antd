@@ -8,7 +8,7 @@ class Footer extends React.PureComponent {
         return (
             <>
                 <Carousel autoplay>
-                    <div>
+                    <div id="cursor">
                         <Row>
                             <Col className={'tc'} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 24 }} lg={{ span: 8 }} xl={{ span: 6 }}><img src={'https://gw.alipayobjects.com/zos/rmsportal/qImQXNUdQgqAKpPgzxyK.svg'} /></Col>
                             <Col className={'tc'} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 24 }} lg={{ span: 8 }} xl={{ span: 6 }}><img src={'https://gw.alipayobjects.com/zos/rmsportal/LqRoouplkwgeOVjFBIRp.svg'} /></Col>
@@ -17,7 +17,7 @@ class Footer extends React.PureComponent {
 
                         </Row>
                     </div>
-                    <div>
+                    <div id="draw">
                         <Row>
                             <Col className={'tc'} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 24 }} lg={{ span: 8 }} xl={{ span: 6 }}><img src={'https://gw.alipayobjects.com/zos/rmsportal/aqldfFDDqRVFRxqLUZOk.svg'} /></Col>
                             <Col className={'tc'} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 24 }} lg={{ span: 8 }} xl={{ span: 6 }}><img src={'https://gw.alipayobjects.com/zos/rmsportal/rqNeEFCGFuwiDKHaVaPp.svg'} /></Col>
