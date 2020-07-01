@@ -19,21 +19,21 @@ class BasicLayout extends React.PureComponent<ILayoutProps, {}, {}> {
             <Layout style={{ minHeight: '100vh' }}>
 
                 <Sider theme={'light'}>
-                    <Header style={{ background: 'none' }}>
+                    <Header style={{ background: 'none', borderRight: '1px solid', borderBottom: '1px solid' }}>
                         antd-admin
                     </Header>
                     <Sidebar menuData={routes} />
                 </Sider>
                 <Layout style={{ background: 'white' }}>
                     {/* 这个header默认是黑色的好恶心 */}
-                    <Header style={{ background: 'none' }}>
+                    <Header style={{ background: 'none', borderBottom:'1px solid' }}>
                         <Head />
                     </Header>
                     <Content>
-                        <Bread breadData={routes}/>
+                        <Bread style={{borderBottom: '1px solid', padding: 20}} breadData={routes}/>
                         {this.props.children}
                     </Content>
-                    <Footer style={{ background: 'white' }}>
+                    <Footer style={{ background: 'white', borderTop: '1px solid' }}>
                         <Foot />
                     </Footer>
                 </Layout>

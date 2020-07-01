@@ -4,6 +4,7 @@ import { Link } from 'umi';
 
 export interface IBread {
     breadData: any[];
+    style:Object;
 }
 class Bread extends React.Component<IBread,{},{}> {
 
@@ -13,9 +14,9 @@ class Bread extends React.Component<IBread,{},{}> {
        
         if(window.location.pathname.indexOf(item.path) > -1){
             if(item.component){
-                ret.push(<Breadcrumb.Item><Link to={item.path}>{item.name}</Link></Breadcrumb.Item>)
+                ret.push(<Breadcrumb.Item key={item.path}><Link to={item.path}>{item.name}</Link></Breadcrumb.Item>)
             }else{
-                ret.push(<Breadcrumb.Item>{item.name}</Breadcrumb.Item>)
+                ret.push(<Breadcrumb.Item key={item.path}>{item.name}</Breadcrumb.Item>)
             }
             
         }
@@ -28,7 +29,7 @@ class Bread extends React.Component<IBread,{},{}> {
     render() {
 
         return (
-            <Breadcrumb separator={'/'} style={{padding: '20px'}}>
+            <Breadcrumb separator={'/'} style={this.props.style}>
                 {this.props.breadData.reduce(this.loop,[])}
                 
 
