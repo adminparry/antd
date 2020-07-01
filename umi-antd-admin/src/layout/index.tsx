@@ -31,7 +31,7 @@ class BasicLayout extends React.PureComponent<ILayoutProps, {}, {}> {
                     </Header>
                     <Content>
                         <Bread style={{borderBottom: '1px solid', padding: 20}} breadData={routes}/>
-                        {this.props.children}
+                        <div style={{padding: 20}}>{this.props.children}</div>
                     </Content>
                     <Footer style={{ background: 'white', borderTop: '1px solid' }}>
                         <Foot />

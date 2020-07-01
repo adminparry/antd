@@ -1,10 +1,30 @@
 import React from 'react';
-import { Input } from '@/components/antd';
-import { Space, Avatar, Badge, Row } from 'antd';
+import { Input, Button  ,Menu} from '@/components/antd';
+import { Space, Avatar, Badge, Row, Dropdown , } from 'antd';
 import { SearchOutlined, UserOutlined } from '@ant-design/icons';
 
+const menu = (
+    <Menu>
+        <Menu.Item key="1">
+            <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">
+                1st menu item
+            </a>
+        </Menu.Item>
+        <Menu.Item key="2">
+            <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">
+                2nd menu item
+            </a>
+        </Menu.Item>
+        <Menu.Item key="3">
+            <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">
+                3rd menu item
+            </a>
+        </Menu.Item>
+    </Menu>
+)
 class Header extends React.PureComponent {
 
+    
     render() {
         return (
             <Row>
@@ -15,6 +35,9 @@ class Header extends React.PureComponent {
 
                 </Space>
                 <Space>
+                    <Dropdown overlay={menu} placement="bottomRight">
+                        <Button>bottomRight</Button>
+                    </Dropdown>
                     <Badge count={1}>
                         <Avatar shape="square" icon={<UserOutlined />} />
                     </Badge>

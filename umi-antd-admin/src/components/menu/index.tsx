@@ -1,6 +1,6 @@
 import React from 'react';
 import { Menu } from 'antd';
-import { merge } from 'lodash';
+import { merge, assign, extend } from 'lodash';
 import { MenuProps } from 'antd/lib/menu';
 import config from './config';
 
@@ -13,7 +13,7 @@ class GMenu extends React.PureComponent<MenuProps, {}, {}> {
 
     render() {
         return (
-            <Menu {...merge(config, this.props)} />
+            <Menu {...assign(config, this.props)} />
         )
     }
 }

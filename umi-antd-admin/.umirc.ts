@@ -16,26 +16,26 @@ export default defineConfig({
           redirect: '/home/index'
         },
         {
-          name: '主页',
+          title: '主页',
           path: '/home/index',
           component: '@/pages/home',
         },
         {
-          name: '图表',
+          title: '图表',
           path: '/home/sub',
           routes: [
             {
-              name: '折线图',
+              title: '折线图',
               path: '/home/sub/1',
               // component: '@/pages/charts/line',
               routes: [
                 {
-                  name: '折线图a',
+                  title: '折线图a',
                   path: '/home/sub/1/a',
                   component: '@/pages/charts/line',
                 },
                 {
-                  name: '折线图b',
+                  title: '折线图b',
                   path: '/home/sub/1/b',
                   component: '@/pages/charts/line',
                 },
@@ -43,12 +43,12 @@ export default defineConfig({
               ]
             },
             {
-              name: '柱状图',
+              title: '柱状图',
               path: '/home/sub/2',
               component: '@/pages/charts/bar',
             },
             {
-              name: '饼图',
+              title: '饼图',
               path: '/home/sub/3',
               component: '@/pages/charts/pie',
             },
@@ -57,32 +57,37 @@ export default defineConfig({
           ]
         },
         {
-          name: '富文本编辑器',
+          title: '富文本编辑器',
           path: '/home/rich-editor',
           component: '@/pages/home',
         },
         {
-          name: '上传文件',
+          title: '上传文件',
           path: '/home/upload',
           component: '@/pages/home',
         },
+        {
+          title: '表格',
+          path: '/home/table',
+          component: '@/pages/table',
+        },
 
         {
-          name: '百度地图',
+          title: '百度地图',
           path: '/home/gis',
           routes: [
             {
-              name: '扎点',
+              title: '扎点',
               path: '/home/gis/point',
               component: '@/pages/home',
             },
             {
-              name: '层',
+              title: '层',
               path: '/home/gis/layer',
               component: '@/pages/home',
             },
             {
-              name: '线',
+              title: '线',
               path: '/home/gis/line',
               component: '@/pages/home',
             },
@@ -91,21 +96,21 @@ export default defineConfig({
         },
 
         {
-          name: '办公三剑客',
+          title: '办公三剑客',
           path: '/home/office',
           routes: [
             {
-              name: 'word',
+              title: 'word',
               path: '/home/office/1',
               component: '@/pages/office/word',
             },
             {
-              name: 'excel',
+              title: 'excel',
               path: '/home/office/2',
               component: '@/pages/office/excel',
             },
             {
-              name: 'ppt',
+              title: 'ppt',
               path: '/home/office/3',
               component: '@/pages/office/ppt',
             },

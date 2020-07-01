@@ -14,9 +14,9 @@ class Bread extends React.Component<IBread,{},{}> {
        
         if(window.location.pathname.indexOf(item.path) > -1){
             if(item.component){
-                ret.push(<Breadcrumb.Item key={item.path}><Link to={item.path}>{item.name}</Link></Breadcrumb.Item>)
+                ret.push(<Breadcrumb.Item key={item.path}><Link to={item.path}>{item.title}</Link></Breadcrumb.Item>)
             }else{
-                ret.push(<Breadcrumb.Item key={item.path}>{item.name}</Breadcrumb.Item>)
+                ret.push(<Breadcrumb.Item key={item.path}>{item.title}</Breadcrumb.Item>)
             }
             
         }

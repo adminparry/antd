@@ -2,7 +2,6 @@ import React, {createContext} from 'react';
 import { Menu } from '@/components/antd';
 import { UserOutlined } from '@ant-design/icons';
 import { Link } from 'umi';
-const { Provider, Consumer } = createContext("Sidebar");
 export interface ISidebarProps {
     menuData: any[]
 }
@@ -28,16 +27,16 @@ class Sidebar extends React.PureComponent<ISidebarProps, {}, {}> {
         
         (document.documentElement || document.body).scrollTop = 0;
     }
-    subMenu = (item: any) => {
+    loop = (item: any) => {
         if(item.routes){
            
-            return <Menu.SubMenu key={item.path} title={item.name}>
-                {item.routes.map(this.subMenu)}
+            return <Menu.SubMenu key={item.path} title={item.title}>
+                {item.routes.map(this.loop)}
             </Menu.SubMenu>
         }
-        if(item.name){
+        if(item.title){
             return <Menu.Item key={item.path}>
-                <Link onClick={this.onClick} to={item.path}>{item.name}</Link>
+                <Link onClick={this.onClick} to={item.path}>{item.title}</Link>
             </Menu.Item>
         }else{
             return null;
@@ -51,15 +50,8 @@ class Sidebar extends React.PureComponent<ISidebarProps, {}, {}> {
 
         return (
             <Menu defaultOpenKeys={defaultOpenKeys} defaultSelectedKeys={defaultSelectedKeys}>
-                {/* <Menu.Item key="1" icon={<UserOutlined />}>
-                    nav 1
-                </Menu.Item>
-                <Menu.SubMenu key="sub1" icon={<UserOutlined />} title="User">
-                    <Menu.Item key="3">Tom</Menu.Item>
-                    <Menu.Item key="4">Bill</Menu.Item>
-                    <Menu.Item key="5">Alex</Menu.Item>
-                </Menu.SubMenu> */}
-                {this.props.menuData.map(this.subMenu)}
+                
+                {this.props.menuData.map(this.loop)}
             </Menu>
         )
 
