@@ -1,7 +1,7 @@
 import React from 'react';
 import { Input, Button, Menu } from '@/components/antd';
 import { Space, Avatar, Badge, Row, Dropdown, } from 'antd';
-import { SearchOutlined, UserOutlined } from '@ant-design/icons';
+import { SearchOutlined, UserOutlined, SettingOutlined } from '@ant-design/icons';
 
 const menu = (
     <Menu>
@@ -16,7 +16,10 @@ const menu = (
         </Menu.Item>
     </Menu>
 )
-class Header extends React.PureComponent {
+export interface IHeader{ 
+    drawer: Function
+}
+class Header extends React.PureComponent<IHeader, {}, {}> {
 
 
     render() {
@@ -28,7 +31,7 @@ class Header extends React.PureComponent {
 
                 </Space>
                 <Space>
-                    <Avatar shape={'circle'} style={{ backgroundColor: '#87d068' }} icon={<UserOutlined />} />
+                    <Avatar onClick={this.props.drawer} shape={'circle'} style={{ backgroundColor: '#87d068' }} icon={<SettingOutlined />} />
 
                     <Dropdown overlay={menu} placement="bottomRight">
                         <Badge count={1}>
