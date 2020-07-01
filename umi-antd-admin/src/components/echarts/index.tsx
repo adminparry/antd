@@ -1,10 +1,14 @@
 import React from 'react';
+import ReactEcharts from 'echarts-for-react';
 
-class Echarts extends React.PureComponent<{},{},{}> {
+export interface IEchartsProps {
+    option: Object
+}
+class Echarts extends React.PureComponent<IEchartsProps,{},{}> {
 
     render(){
 
-        return <div></div>
+        return <ReactEcharts  {...this.props} />
     }
 }
 

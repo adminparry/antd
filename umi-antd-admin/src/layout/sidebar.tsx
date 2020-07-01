@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {createContext} from 'react';
 import { Menu } from '@/components/antd';
 import { UserOutlined } from '@ant-design/icons';
 import { Link } from 'umi';
-
+const { Provider, Consumer } = createContext("Sidebar");
 export interface ISidebarProps {
     menuData: any[]
 }
@@ -24,6 +24,10 @@ class Sidebar extends React.PureComponent<ISidebarProps, {}, {}> {
             }
         })
     }
+    onClick = () => {
+        
+        (document.documentElement || document.body).scrollTop = 0;
+    }
     subMenu = (item: any) => {
         if(item.routes){
            
@@ -33,7 +37,7 @@ class Sidebar extends React.PureComponent<ISidebarProps, {}, {}> {
         }
         if(item.name){
             return <Menu.Item key={item.path}>
-                <Link to={item.path}>{item.name}</Link>
+                <Link onClick={this.onClick} to={item.path}>{item.name}</Link>
             </Menu.Item>
         }else{
             return null;
