@@ -1,13 +1,13 @@
 import React from 'react';
 import { Tree  } from 'antd';
-import { assign } from 'lodash';
+import { merge, clone} from 'lodash';
 import config from './config';
 
 class GTree extends React.PureComponent {
 
     render(){
 
-        return <Tree {...assign(config, this.props)} />
+        return <Tree {...merge(clone(config), this.props)} />
     }
 }
 
