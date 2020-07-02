@@ -1,13 +1,17 @@
 
 import React from 'react';
 import { Echarts} from '@/components/antd';
+import { connect } from 'umi';
 
 
 // import './index.less';
-
+// @ts-ignore
+@connect(({ charts }) => ({
+    charts: charts.pie
+}))
 class Home extends React.PureComponent {
 
-    option = {
+    option = (data) => ({
         tooltip: {
             trigger: 'item',
             formatter: '{a} <br/>{b}: {c} ({d}%)'
@@ -15,7 +19,7 @@ class Home extends React.PureComponent {
         legend: {
             orient: 'vertical',
             left: 10,
-            data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+            data: data.map(item=> item.time)
         },
         series: [
             {
@@ -37,20 +41,22 @@ class Home extends React.PureComponent {
                 labelLine: {
                     show: false
                 },
-                data: [
-                    {value: 335, name: '直接访问'},
-                    {value: 310, name: '邮件营销'},
-                    {value: 234, name: '联盟广告'},
-                    {value: 135, name: '视频广告'},
-                    {value: 1548, name: '搜索引擎'}
-                ]
+                data: data.map(item => ({
+                    value:item.value,
+                    name: item.time
+                }))
             }
         ]
-    };
+    });
+    componentDidMount(){
+        this.props.dispatch({
+            type:'charts/chartPie'
+        })
+    }
     render() {
         return (
             <>
-            <Echarts option={this.option} />
+            <Echarts option={this.option(this.props.charts)} />
             </>
             
         )

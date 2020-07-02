@@ -1,6 +1,6 @@
 import React from 'react';
-import { Echarts} from '@/components/antd';
-import {connect } from 'dva';
+import { Echarts } from '@/components/antd';
+import { connect } from 'dva';
 
 // import './index.less';
 export interface ILineProps {
@@ -8,10 +8,10 @@ export interface ILineProps {
     dispatch: Promise<any>
 }
 // @ts-ignore
-@connect(({charts}) => ({
+@connect(({ charts }) => ({
     charts: charts.line
 }))
-class Line extends React.PureComponent<ILineProps,{},{}> {
+class Line extends React.PureComponent<ILineProps, {}, {}> {
 
     option = (data) => ({
         xAxis: {
@@ -22,22 +22,24 @@ class Line extends React.PureComponent<ILineProps,{},{}> {
             type: 'value'
         },
         series: [{
-            data: data.map(item=> item.value),
+            data: data.map(item => item.value),
             type: 'line'
         }]
     })
-    componentDidMount(){
+    componentDidMount() {
         this.props.dispatch({
             type: 'charts/chartLine',
-           
+            payload: {
+                year: 2020
+            }
         })
     }
     render() {
         return (
             <>
-            <Echarts option={this.option(this.props.charts)} />
+                <Echarts option={this.option(this.props.charts)} />
             </>
-            
+
         )
     }
 }

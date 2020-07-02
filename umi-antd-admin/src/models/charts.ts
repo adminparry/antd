@@ -1,7 +1,9 @@
-import { lineService } from '@/services/charts'
+import { lineService ,pieService} from '@/services/charts'
 export default {
     state: {
-        line: []
+        line: [],
+        pie: [],
+        
     },
     namespace: 'charts',
     effects: {
@@ -12,6 +14,16 @@ export default {
                 type: 'update',
                 payload: {
                     line: ret
+                }
+            })
+        },
+        * chartPie({ payload }, { call, put, select }) {
+            const ret = yield call(pieService, payload);
+
+            yield put({
+                type: 'update',
+                payload: {
+                    pie: ret
                 }
             })
         }

@@ -1,31 +1,41 @@
 
 import React from 'react';
 import { Echarts} from '@/components/antd';
+import { connect } from 'umi';
 
 
-// import './index.less';
-
+// @ts-ignore
+@connect(({charts}) => ({
+    charts: charts.line
+}))
 class Bar extends React.PureComponent {
 
-    option = {
+    option = (data) => ({
         xAxis: {
             type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            data: data.map(item => item.time)
         },
         yAxis: {
             type: 'value'
         },
         series: [{
-            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            data: data.map(item => item.value),
             type: 'bar'
         }]
-    };
+    });
    
-    
+    componentDidMount(){
+        this.props.dispatch({
+            type: 'charts/chartLine',
+            payload: {
+                year: 2020
+            }
+        })
+    }
     render() {
         return (
             <>
-            <Echarts option={this.option} />
+            <Echarts option={this.option(this.props.charts)} />
             </>
             
         )
